@@ -1,8 +1,48 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import {
+  Button,
+  Col,
+  Row,
+  Form,
+  FormModel,
+  Radio,
+  Input,
+  InputNumber,
+  Layout,
+  Card,
+  message,
+  Menu,
+  Breadcrumb,
+} from "ant-design-vue";
+import "ant-design-vue/dist/antd.css";
+Vue.config.productionTip = true;
 
-Vue.config.productionTip = false
+// Use UI before router
+Vue.use(Button);
+Vue.use(Col);
+Vue.use(Row);
+Vue.use(Form);
+Vue.use(FormModel);
+Vue.use(Radio);
+Vue.use(Input);
+Vue.use(InputNumber);
+Vue.use(Layout);
+Vue.use(Card);
+Vue.use(message);
+Vue.use(Breadcrumb);
+Vue.use(Menu);
+
+message.config({
+  duration: 3,
+  maxCount: 3,
+});
+Vue.prototype.$message = message;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app");
