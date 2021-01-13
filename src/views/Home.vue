@@ -23,6 +23,18 @@
         <a-menu-item key="3">
           nav 3
         </a-menu-item>
+        <a-menu-item key="4">
+          nav 4
+        </a-menu-item>
+        <a-menu-item key="5">
+          nav 5
+        </a-menu-item>
+        <a-menu-item key="6">
+          nav 6
+        </a-menu-item>
+        <a-button type="danger" ghost @click="logout" id="logout-btn">
+          Logout
+        </a-button>
       </a-menu>
     </a-layout-header>
     <a-layout>
@@ -95,6 +107,17 @@
           }"
         >
           Content
+
+          <div style="margin-top: 16px">
+            <a-button type="primary" ghost @click="increment" id="logout-btn">
+              Increment
+            </a-button>
+          </div>
+          <div style="margin-top: 16px">
+            <a-button type="primary" ghost @click="showState" id="logout-btn">
+              Show State
+            </a-button>
+          </div>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -102,11 +125,25 @@
 </template>
 
 <script>
+import router from "@/router";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       collapsed: false,
     };
+  },
+  methods: {
+    logout: function() {
+      localStorage.removeItem("token");
+      router.push({ name: "Login" });
+    },
+    ...mapActions({
+      increment: "incrementAsyns",
+    }),
+    showState: function() {
+      console.log("Fake Data", this.$store.state.fakeData);
+    },
   },
 };
 </script>
@@ -118,6 +155,12 @@ export default {
   background: rgba(255, 255, 255, 0.2);
   margin: 16px 28px 16px 0;
   float: left;
+}
+#logout-btn {
+  /* position: absolute;
+  top: 16px;
+  right: 48px; */
+  /* float: right; */
 }
 </style>
 

@@ -16,6 +16,7 @@ import {
   message,
   Menu,
   Breadcrumb,
+  Icon,
 } from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 Vue.config.productionTip = true;
@@ -34,6 +35,7 @@ Vue.use(Card);
 Vue.use(message);
 Vue.use(Breadcrumb);
 Vue.use(Menu);
+Vue.use(Icon);
 
 message.config({
   duration: 3,
@@ -44,5 +46,6 @@ Vue.prototype.$message = message;
 new Vue({
   router,
   store,
+  message,
   render: (h) => h(App),
 }).$mount("#app");
