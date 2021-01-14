@@ -41,7 +41,7 @@ Vue.use(Icon);
 Vue.use(Spin);
 
 message.config({
-  duration: 3,
+  duration: 2,
   maxCount: 3,
 });
 Vue.prototype.$message = message;

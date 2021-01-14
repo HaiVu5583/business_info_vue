@@ -4,4 +4,5 @@ export default {
   login: "Đăng nhập",
   invalid_username_password: "Tên đăng nhập hoặc mật khẩu không đúng",
   general_error: "Có lỗi xảy ra, vui lòng thử lại sau",
+  welcome_back: "Chào mừng quay trờ lại",
 };

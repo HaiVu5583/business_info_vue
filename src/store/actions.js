@@ -24,9 +24,7 @@ export default {
       if (response.status == 200) {
         const userInfo = response.data;
         console.log("Response data", userInfo);
-        this._vm.$message.info(
-          `User: ${loginInfo.username}, Pass: ${loginInfo.password}`
-        );
+        this._vm.$message.success(i18n.t("message.welcome_back"));
         localStorage.setItem("user", JSON.stringify(userInfo));
         commit(types.SAVE_LOGIN_DATA, userInfo);
         router.push({ name: "Home" });
