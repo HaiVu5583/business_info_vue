@@ -3,11 +3,11 @@
     <a-col :span="8" :offset="8">
       <a-card>
         <a-form :label-align="align">
-          <a-form-item label="Username" :colon="false">
+          <a-form-item :label="$t('message.username')" :colon="false">
             <a-input v-model="username" />
           </a-form-item>
 
-          <a-form-item label="Password" :colon="false">
+          <a-form-item :label="$t('message.password')" :colon="false">
             <a-input-password
               :visibilityToggle="false"
               v-model="password"
@@ -19,7 +19,7 @@
             <a-spin :spinning="loading">
               <div class="spin-content">
                 <a-button type="primary" @click="login">
-                  Login
+                  {{ $t("message.login") }}
                 </a-button>
               </div>
             </a-spin>
@@ -62,14 +62,14 @@ export default {
             localStorage.setItem("token", "what a token");
             router.push({ name: "Home" });
           } else if (response.status == 401) {
-            this.$message.error("Tên đăng nhập hoặc mật khẩu không đúng");
+            this.$message.error(this.$t("message.invalid_username_password"));
           } else {
-            this.$message.error("Có lỗi xảy ra vui lòng thử lại sau");
+            this.$message.error(this.$t("message.general_error"));
           }
         })
         .catch(() => {
           this.loading = false;
-          this.$message.error("Có lỗi xảy ra vui lòng thử lại sau");
+          this.$message.error(this.$t("message.general_error"));
         });
     },
   },
