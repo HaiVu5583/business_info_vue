@@ -1,0 +1,4 @@
+export default {
+  INCREMENT: "INCREMENT",
+  SAVE_LOGIN_DATA: "SAVE_LOGIN_DATA",
+};

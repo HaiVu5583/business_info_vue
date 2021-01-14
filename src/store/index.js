@@ -1,25 +1,20 @@
 import Vue from "vue";
 import Vuex, { createLogger } from "vuex";
-import { INCREMENT } from "./mutations_type";
+import actions from "./actions";
+import mutations from "./mutations";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     fakeData: 1,
-  },
-  mutations: {
-    [INCREMENT](state) {
-      state.fakeData++;
+    auth: {
+      username: "",
+      accessToken: "",
     },
   },
-  actions: {
-    incrementAsyns({ commit }) {
-      setTimeout(() => {
-        commit(INCREMENT);
-      }, 1000);
-    },
-  },
+  mutations,
+  actions,
   modules: {},
   plugins: [createLogger()],
 });

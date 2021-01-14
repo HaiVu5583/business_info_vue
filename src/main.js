@@ -17,6 +17,7 @@ import {
   Menu,
   Breadcrumb,
   Icon,
+  Spin,
 } from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 Vue.config.productionTip = true;
@@ -36,6 +37,7 @@ Vue.use(message);
 Vue.use(Breadcrumb);
 Vue.use(Menu);
 Vue.use(Icon);
+Vue.use(Spin);
 
 message.config({
   duration: 3,

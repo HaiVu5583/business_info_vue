@@ -14,10 +14,15 @@
               autocomplete="on"
             />
           </a-form-item>
+
           <a-form-item>
-            <a-button type="primary" @click="login">
-              Login
-            </a-button>
+            <a-spin :spinning="loading">
+              <div class="spin-content">
+                <a-button type="primary" @click="login">
+                  Login
+                </a-button>
+              </div>
+            </a-spin>
           </a-form-item>
         </a-form>
       </a-card>
@@ -35,19 +40,37 @@ export default {
       align: "left",
       username: "",
       password: "",
+      loading: false,
     };
   },
   methods: {
     login: function() {
-      // const user = localStorage.getItem("user");
-      // console.log("Old", user);
-      // localStorage.setItem(
-      //   "user",
-      //   JSON.stringify({ username: this.username, password: this.password })
-      // );
-      this.$message.info(`User: ${this.username}, Pass: ${this.password}`);
-      localStorage.setItem("token", "what a token");
-      router.push({ name: "Home" });
+      this.loading = true;
+      this.$store
+        .dispatch("login", {
+          username: this.username,
+          password: this.password,
+        })
+        .then((response) => {
+          this.loading = false;
+          console.log("Login response components", response);
+          let message;
+          if (response.status == 200) {
+            this.$message.info(
+              `User: ${this.username}, Pass: ${this.password}`
+            );
+            localStorage.setItem("token", "what a token");
+            router.push({ name: "Home" });
+          } else if (response.status == 401) {
+            this.$message.error("Tên đăng nhập hoặc mật khẩu không đúng");
+          } else {
+            this.$message.error("Có lỗi xảy ra vui lòng thử lại sau");
+          }
+        })
+        .catch(() => {
+          this.loading = false;
+          this.$message.error("Có lỗi xảy ra vui lòng thử lại sau");
+        });
     },
   },
 };

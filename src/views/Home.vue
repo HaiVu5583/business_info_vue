@@ -114,9 +114,19 @@
             </a-button>
           </div>
           <div style="margin-top: 16px">
-            <a-button type="primary" ghost @click="showState" id="logout-btn">
+            <a-button type="primary" ghost @click="showState">
               Show State
             </a-button>
+          </div>
+          <div style="margin-top: 16px">
+            <a-spin :spinning="loading">
+              <a-icon slot="indicator" type="loading" spin />
+              <div class="spin-content">
+                <a-button type="primary" ghost @click="makeRequest">
+                  Make Request
+                </a-button>
+              </div>
+            </a-spin>
           </div>
         </a-layout-content>
       </a-layout>
@@ -131,6 +141,7 @@ export default {
   data() {
     return {
       collapsed: false,
+      loading: false,
     };
   },
   methods: {
@@ -142,7 +153,16 @@ export default {
       increment: "incrementAsyns",
     }),
     showState: function() {
-      console.log("Fake Data", this.$store.state.fakeData);
+      this.$message.warning("Fake data: " + this.$store.state.fakeData);
+    },
+    makeRequest: function() {
+      console.log("Make request");
+      this.loading = true;
+      this.$store.dispatch("makeRequest").then((response) => {
+        console.log("Response from components", response);
+        this.loading = false;
+        this.$message.success(JSON.stringify(response.data));
+      });
     },
   },
 };
