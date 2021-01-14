@@ -11,10 +11,7 @@ const getAuth = () => {
     console.log("Previous user info", userInfo);
     return userInfo;
   } catch (err) {
-    return {
-      username: "",
-      accessToken: "",
-    };
+    return null;
   }
 };
 

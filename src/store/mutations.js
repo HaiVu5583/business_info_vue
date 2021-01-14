@@ -10,9 +10,6 @@ export default {
     };
   },
   [types.CLEAR_LOGIN_DATA](state) {
-    state.auth = {
-      username: "",
-      accessToken: "",
-    };
+    state.auth = null;
   },
 };
