@@ -39,4 +39,10 @@ export default {
       return true;
     }
   },
+
+  async logout({ commit, dispatch }) {
+    localStorage.removeItem("user");
+    commit(types.CLEAR_LOGIN_DATA);
+    router.push({ name: "Login" });
+  },
 };

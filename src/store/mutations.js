@@ -9,4 +9,10 @@ export default {
       ...loginData,
     };
   },
+  [types.CLEAR_LOGIN_DATA](state) {
+    state.auth = {
+      username: "",
+      accessToken: "",
+    };
+  },
 };

@@ -146,8 +146,7 @@ export default {
   },
   methods: {
     logout: function() {
-      localStorage.removeItem("token");
-      router.push({ name: "Login" });
+      this.$store.dispatch("logout");
     },
     ...mapActions({
       increment: "incrementAsyns",

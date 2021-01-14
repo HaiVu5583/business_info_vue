@@ -4,14 +4,24 @@ import actions from "./actions";
 import mutations from "./mutations";
 
 Vue.use(Vuex);
+const getAuth = () => {
+  const userStr = localStorage.getItem("user");
+  try {
+    const userInfo = JSON.parse(userStr);
+    console.log("Previous user info", userInfo);
+    return userInfo;
+  } catch (err) {
+    return {
+      username: "",
+      accessToken: "",
+    };
+  }
+};
 
 export default new Vuex.Store({
   state: {
     fakeData: 1,
-    auth: {
-      username: "",
-      accessToken: "",
-    },
+    auth: getAuth(),
   },
   mutations,
   actions,
