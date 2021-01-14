@@ -20,8 +20,6 @@ import {
   Spin,
 } from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
-import VueI18n from "vue-i18n";
-import i18n from "@/locale";
 Vue.config.productionTip = true;
 
 // Vue.use(VueI18n);
@@ -48,10 +46,12 @@ message.config({
 });
 Vue.prototype.$message = message;
 
+import i18n from "@/locale";
+
 new Vue({
+  i18n,
+  message,
   router,
   store,
-  message,
-  i18n,
   render: (h) => h(App),
 }).$mount("#app");

@@ -32,7 +32,7 @@
 
 <script>
 import "ant-design-vue/dist/antd.css";
-import router from "@/router";
+// import router from "@/router";
 export default {
   name: "LoginPage",
   data: function() {
@@ -53,23 +53,23 @@ export default {
         })
         .then((response) => {
           this.loading = false;
-          console.log("Login response components", response);
-          let message;
-          if (response.status == 200) {
-            this.$message.info(
-              `User: ${this.username}, Pass: ${this.password}`
-            );
-            localStorage.setItem("token", "what a token");
-            router.push({ name: "Home" });
-          } else if (response.status == 401) {
-            this.$message.error(this.$t("message.invalid_username_password"));
-          } else {
-            this.$message.error(this.$t("message.general_error"));
-          }
+          // console.log("Login response components", response);
+          // let message;
+          // if (response.status == 200) {
+          //   this.$message.info(
+          //     `User: ${this.username}, Pass: ${this.password}`
+          //   );
+          //   localStorage.setItem("token", "what a token");
+          //   router.push({ name: "Home" });
+          // } else if (response.status == 401) {
+          //   this.$message.error(this.$t("message.invalid_username_password"));
+          // } else {
+          //   this.$message.error(this.$t("message.general_error"));
+          // }
         })
         .catch(() => {
           this.loading = false;
-          this.$message.error(this.$t("message.general_error"));
+          // this.$message.error(this.$t("message.general_error"));
         });
     },
   },
